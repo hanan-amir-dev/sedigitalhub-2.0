@@ -1,0 +1,2 @@
+- [Lovable vite-tanstack-config on Replit](lovable-vite-tanstack-config.md) — its default dev server binds IPv6 "::" which fails on Replit; override via `vite.server` in defineConfig.
+- [Supabase SSR WebSocket crash](supabase-ssr-websocket.md) — createClient() throws on SSR (Node 20 has no global WebSocket); pass `ws` package as realtime transport when undefined.

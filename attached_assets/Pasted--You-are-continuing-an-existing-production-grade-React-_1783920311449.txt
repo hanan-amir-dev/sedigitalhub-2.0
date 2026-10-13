@@ -1,0 +1,367 @@
+
+You are continuing an existing production-grade React + TypeScript + Vite application called SeDigitalHub.
+
+The public marketing website is already complete.
+
+Do not redesign or replace any existing landing page components.
+
+Your task is to build only the authentication experience while preserving the existing visual identity.
+
+The current tech stack is:
+
+React 19
+TypeScript
+Vite
+React Router v6+
+Tailwind CSS
+shadcn/ui
+Framer Motion
+React Hook Form
+Zod
+Supabase
+Vercel
+
+Do not install unnecessary dependencies.
+
+PRIMARY OBJECTIVE
+
+Build a beautiful, production-ready authentication flow consisting of:
+
+Sign Up page
+Sign In page
+Authentication routing
+Supabase integration
+Protected Dashboard
+Logout functionality
+
+The UI quality should match modern SaaS companies like:
+
+Stripe
+Linear
+Vercel
+Framer
+Notion
+Clerk
+Supabase
+
+This should not look like a generic login form.
+
+IMPORTANT CONSTRAINTS
+Do NOT modify the landing page design.
+Do NOT redesign the navbar.
+Do NOT implement subscriptions, payments, services, admin panels, analytics, referrals, or other business features.
+Keep all code modular, reusable, and production-ready.
+Maintain the existing design system.
+ROUTING
+
+Implement the following routes:
+
+/
+/signup
+/login
+/dashboard
+
+Update existing buttons:
+
+Login → /login
+Get Started → /signup
+SIGN UP PAGE
+
+Design a premium split-screen layout.
+
+Left Section
+
+Include:
+
+SeDigitalHub logo
+Headline
+Supporting text
+Benefits list
+Soft animated gradients
+Floating geometric shapes
+Background blur effects
+Framer Motion animations
+
+Example headline:
+
+Build Your Future with SeDigitalHub
+
+Example subheading:
+
+Join thousands of professionals and businesses growing with premium digital solutions.
+
+Right Section
+
+Create a modern glassmorphism card.
+
+Fields:
+
+Full Name
+Email Address
+Mobile Number
+Password
+Confirm Password
+Country (dropdown)
+Full Address
+CNIC
+Referral Code (optional)
+
+Checkbox:
+
+I agree to the Terms & Conditions
+
+Buttons:
+
+Create Account
+Continue with Google (UI only if OAuth isn't configured)
+
+Footer:
+
+Already have an account?
+
+Sign In
+FORM VALIDATION
+
+Use React Hook Form + Zod.
+
+Validation rules:
+
+Required fields
+Valid email
+Mobile number format
+Minimum 8-character password
+Passwords must match
+Terms checkbox required
+
+Display:
+
+Inline validation
+Helpful error messages
+Loading state
+Disabled submit button while processing
+SIGN IN PAGE
+
+Use the same design language.
+
+Fields:
+
+Email
+Password
+
+Features:
+
+Show/Hide Password
+Remember Me
+Forgot Password
+Login button
+Continue with Google button (placeholder)
+
+Footer:
+
+Don't have an account?
+
+Create Account
+
+Maintain the same premium animations and styling.
+
+SUPABASE INTEGRATION
+
+Use the existing Supabase client.
+
+Do not recreate it.
+
+Sign Up
+
+Use:
+
+supabase.auth.signUp()
+
+After successful registration:
+
+Insert additional user information into the profiles table:
+
+full_name
+phone
+country
+address
+cnic
+referral_code
+
+If email confirmation is disabled:
+
+Automatically sign in the user
+Redirect to /dashboard
+
+If email confirmation is enabled:
+
+Display a professional success screen instructing the user to verify their email.
+
+Sign In
+
+Use:
+
+supabase.auth.signInWithPassword()
+
+On success:
+
+Redirect to:
+
+/dashboard
+
+Display friendly error messages for invalid credentials.
+
+AUTHENTICATION CONTEXT
+
+Create a reusable AuthProvider.
+
+Expose:
+
+user
+session
+loading
+signUp()
+signIn()
+signOut()
+
+Use:
+
+supabase.auth.onAuthStateChange()
+
+Persist sessions after browser refresh.
+
+PROTECTED ROUTES
+
+Create a reusable ProtectedRoute.
+
+Behavior:
+
+Show loading spinner while checking authentication.
+If authenticated, render children.
+Otherwise redirect to /login.
+DASHBOARD
+
+For this milestone, create only a simple dashboard.
+
+White background.
+
+Centered card.
+
+Display:
+
+Welcome message
+User name
+Email
+Logout button
+
+No additional business features.
+
+LOGOUT
+
+Logout should:
+
+supabase.auth.signOut()
+
+Then:
+
+Clear session
+Redirect to /
+DESIGN REQUIREMENTS
+
+The authentication pages must perfectly match the landing page.
+
+Reuse:
+
+Colors
+Typography
+Shadows
+Border radius
+Buttons
+Input styles
+Gradients
+Glassmorphism
+Animations
+Icons
+Layout spacing
+
+The user should immediately recognize these pages as part of the same product.
+
+RESPONSIVENESS
+
+Support:
+
+Desktop
+Laptop
+Tablet
+Mobile
+
+Requirements:
+
+No horizontal scrolling
+Touch-friendly inputs
+Proper spacing
+Responsive typography
+ACCESSIBILITY
+
+Implement:
+
+Semantic HTML
+ARIA labels
+Keyboard navigation
+Focus indicators
+Accessible forms
+WCAG AA color contrast
+CODE QUALITY
+
+Requirements:
+
+Strict TypeScript
+Reusable components
+Reusable hooks
+Clean architecture
+No duplicate code
+Proper error handling
+Production-ready folder structure
+Zero TypeScript errors
+Zero linting errors
+EXPECTED FOLDER STRUCTURE
+src/
+├── components/
+│   ├── auth/
+│   │   ├── AuthLayout.tsx
+│   │   ├── AuthCard.tsx
+│   │   ├── PasswordInput.tsx
+│   │   ├── SocialLoginButton.tsx
+│   │   └── ProtectedRoute.tsx
+│
+├── context/
+│   └── AuthContext.tsx
+│
+├── hooks/
+│   └── useAuth.ts
+│
+├── pages/
+│   ├── Login.tsx
+│   ├── Signup.tsx
+│   └── Dashboard.tsx
+│
+├── lib/
+│   └── supabase.ts
+│
+└── routes/
+    └── AppRoutes.tsx
+SUCCESS CRITERIA
+
+The task is complete only when:
+
+Login button routes to /login.
+Get Started button routes to /signup.
+Sign Up page is visually stunning and production-ready.
+Sign In page matches the same design language.
+Supabase authentication works correctly.
+Additional profile data is stored in the profiles table.
+Authentication sessions persist after refresh.
+/dashboard is protected.
+Logout returns the user to the landing page.
+The application builds successfully with no TypeScript or lint errors.
+
+Final instruction: Prioritize polish over feature count. The Sign Up and Sign In pages should feel like a premium SaaS product, matching the quality of the existing SeDigitalHub landing page while integrating cleanly with Supabase authentication
